@@ -1,6 +1,7 @@
 import numpy
 import pandas
 
-print("Hello world!")
-print("Test")
+a=5
+b=3
+c=a+b
 
