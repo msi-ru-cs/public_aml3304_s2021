@@ -1,21 +1,37 @@
+# Disable sudo to speed up the build
+sudo: false
+
+# Set the build language to Python
 language: python
-python:
-  - "3.7"
-cache: pip
+
+# Set the python version to 3.7
+python: 3.7
+
+env:
+  - CODECOV_TOKEN='db971e50-5eb5-4bff-9178-a1db9fa57d2a'
+
+# Install the codecov pip dependency
 install:
-  - pip install -r requirements.txt
+  - pip install codecov
+
+# Run the unit test
 script:
-  - python tests.py
+  - coverage run tests.py
+
+# Push the results back to codecov
+after_success:
+  - codecov
 
 
 #language: python
 #python:
 #  - "3.7"
-#
-## command to install dependencies
+#cache: pip
+#env:
+#  - CODECOV_TOKEN='db971e50-5eb5-4bff-9178-a1db9fa57d2a'
 #install:
 #  - pip install -r requirements.txt
-## command to run tests
 #script:
-#  - coverage run git_bot_commands_3304.py
-#  # - pytest
+#  - python tests.py
+
+
